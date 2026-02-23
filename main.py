@@ -6,11 +6,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, text
 from pydantic import BaseModel
 
+
 app = FastAPI(
     title="ACME Natural Language API",
     description="Consultas en lenguaje natural sobre la base de datos ACME",
-    version="1.0.0"
+    version="1.0.0",
+    servers=[
+        {"url": "https://acme-nl-api-production.up.railway.app", "description": "Produccion Railway"}
+    ]
 )
+
 
 app.add_middleware(
     CORSMiddleware,
